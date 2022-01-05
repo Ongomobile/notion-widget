@@ -23,7 +23,7 @@
         name="price"
         class="add-counter-input"
         v-model.number="windowPrice"
-        placeholder="Add Window Price"
+        placeholder="Add Counter Price"
       />
       <input
         type="submit"
