@@ -43,7 +43,10 @@
         v-for="(counter, index) in counters"
         :key="index"
       >
-        <Counter :counter="counter" />
+        <Counter
+          :counter="counter"
+          @counter-to-delete="deleteSelectedCounter"
+        />
       </li>
     </ul>
   </div>
@@ -85,8 +88,16 @@ export default {
       this.quantity = 0;
 
       this.counterId = newCounter.id;
-      let countersArr = this.counters;
-      console.log({ countersArr });
+      // let countersArr = this.counters;
+      // console.log({ countersArr });
+    },
+    deleteSelectedCounter(id) {
+      const index = this.counters
+        .map((item) => {
+          return item.id;
+        })
+        .indexOf(id);
+      this.counters.splice(index, 1);
     },
   },
   computed: {

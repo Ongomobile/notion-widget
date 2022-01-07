@@ -39,14 +39,19 @@ export default {
   props: {
     counter: Object,
   },
+  data() {
+    return {
+      counterIdToDelete: null,
+    };
+  },
   methods: {
     deleteCounter(counter) {
-      console.log("Delete Counter Called", counter);
+      this.counterIdToDelete = counter.id;
+      this.$emit("counter-to-delete", this.counterIdToDelete);
     },
     incrementQty(counter) {
       counter.quantity += 1;
       this.getSubtotal(counter);
-      console.log({ counter });
     },
     decrementQty(counter) {
       if (counter.quantity > 0) {
