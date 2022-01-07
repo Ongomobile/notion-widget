@@ -33,8 +33,7 @@
       />
     </form>
     <div class="total-price-wrapper">
-      <p class="total-text">Total Price {{ grandTotal || 0.0 }}</p>
-      <p>"Feature to be implemented"</p>
+      <p class="total-text">Total Price {{ getTotals }}</p>
     </div>
   </div>
   <div class="counters-wrapper">
@@ -97,6 +96,13 @@ export default {
       } else {
         return true;
       }
+    },
+    getTotals: function () {
+      const grandTotals = this.counters.reduce(
+        (prev, counter) => (prev += Number(counter.subtotal)),
+        0
+      );
+      return grandTotals.toFixed(2);
     },
   },
 };
